@@ -3,70 +3,62 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cpf;
+use App\Models\Role;
+use App\Models\Status;
 use App\Models\User;
+use App\Rules\ValidCpf;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
     use RegistersUsers;
 
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
     protected $redirectTo = '/home';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
     protected function validator(array $data)
     {
+        // Limpa o CPF para a validação de unicidade
+        $cpfOnlyNumbers = preg_replace('/[^0-9]/', '', $data['cpf'] ?? '');
+
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'cpf' => ['required', 'string', 'unique:cpfs,number,' . $cpfOnlyNumbers, new ValidCpf],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Models\User
-     */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        // Pega a role e o status padrão para novos usuários
+        $userRole = Role::where('slug', 'user')->firstOrFail();
+        $activeStatus = Status::where('slug', 'active')->firstOrFail();
+
+        // Usa uma transação para garantir que ambos (User e Cpf) sejam criados com sucesso
+        return DB::transaction(function () use ($data, $userRole, $activeStatus) {
+            $user = User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'role_id' => $userRole->id,
+                'status_id' => $activeStatus->id,
+            ]);
+
+            Cpf::create([
+                'user_id' => $user->id,
+                'number' => preg_replace('/[^0-9]/', '', $data['cpf']), // Salva somente os números
+            ]);
+
+            return $user;
+        });
     }
 }

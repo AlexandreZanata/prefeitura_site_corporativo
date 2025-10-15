@@ -17,10 +17,10 @@ class DatabaseSeeder extends Seeder
             StatusSeeder::class,
             SecretarySeeder::class,
             RoleHierarchySeeder::class,
-
-            // Seeders que dependem dos anteriores
             UserSeeder::class,
             DepartmentSeeder::class,
+            MenuItemSeeder::class,
+            SettingSeeder::class,
         ]);
     }
 }

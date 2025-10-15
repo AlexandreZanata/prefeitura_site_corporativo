@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable implements JWTSubject // Implemente a interface
+class User extends Authenticatable implements JWTSubject
 {
     use HasFactory, Notifiable;
 
@@ -18,7 +19,7 @@ class User extends Authenticatable implements JWTSubject // Implemente a interfa
     {
         parent::boot();
         static::creating(function ($model) {
-            $model->{$model->getKeyName()} = (string) \Illuminate\Support\Str::uuid();
+            $model->{$model->getKeyName()} = (string) Str::uuid();
         });
     }
 
@@ -31,7 +32,8 @@ class User extends Authenticatable implements JWTSubject // Implemente a interfa
         'name',
         'email',
         'password',
-        'is_admin',
+        'role_id',   // Adicionado
+        'status_id', // Adicionado
     ];
 
     /**
@@ -77,9 +79,16 @@ class User extends Authenticatable implements JWTSubject // Implemente a interfa
         return [];
     }
 
+    // --- Relacionamentos ---
+
     public function role()
     {
         return $this->belongsTo(Role::class);
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(Status::class);
     }
 
     public function cpf()

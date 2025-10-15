@@ -6,3 +6,37 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+
+// Estilos customizados para a Página Inicial
+
+.hero-section {
+    background: linear-gradient(45deg, rgba(2,0,36,0.7) 0%, rgba(9,9,121,0.7) 35%, rgba(0,212,255,0.7) 100%), url('https://via.placeholder.com/1920x600/CCCCCC/FFFFFF?text=Foto+da+Cidade');
+    background-size: cover;
+    background-position: center;
+    padding: 6rem 0;
+    border-radius: 0 0 20px 20px;
+    margin-bottom: -50px; /* Efeito de sobreposição */
+    position: relative;
+    z-index: 1;
+}
+
+.service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 15px;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+}
+
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
