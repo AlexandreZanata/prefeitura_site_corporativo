@@ -1,10 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PrefeituraController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PrefeituraController::class, 'index'])->name('prefeitura.index');
 
 Auth::routes();
 
