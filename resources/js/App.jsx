@@ -1,16 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'; // Import router components
 import { ThemeProvider } from './contexts/ThemeContext';
 import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
 import './styles/main.css';
 
 function App() {
+    // This effect to hide a loader is good, we can keep it.
+    useEffect(() => {
+        const loader = document.getElementById('loader-wrapper');
+        if (loader) {
+            loader.classList.add('hidden');
+        }
+    }, []);
+
     return (
         <ThemeProvider>
-            {/* Aqui entrariam Header, Footer, etc. */}
-            <main>
-                <HomePage />
-            </main>
+            {/* BrowserRouter manages the app's routing history */}
+            <BrowserRouter>
+                {/* Routes is a container for all the individual routes */}
+                <Routes>
+                    {/* When the URL is "/", render the HomePage component */}
+                    <Route path="/" element={<HomePage />} />
+
+                    {/* When the URL is "/login", render the LoginPage component */}
+                    <Route path="/login" element={<LoginPage />} />
+
+                    {/* You can add more routes for other pages here in the future */}
+                </Routes>
+            </BrowserRouter>
         </ThemeProvider>
     );
 }

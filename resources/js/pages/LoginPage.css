@@ -1,0 +1,472 @@
+.split-login {
+    min-height: 100vh;
+    display: flex;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #ffffff;
+}
+
+/* ===== LADO ESQUERDO - BRANDING COM FUNDO AZUL ===== */
+.login-side {
+    flex: 1;
+    background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+    color: white;
+    display: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-side::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+.brand-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+.brand-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;     /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente */
+    text-align: center;      /* Centraliza o texto */
+    height: 100%;           /* Ocupa toda a altura disponível */
+}
+
+.brand-logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 2rem;
+    filter: brightness(0) invert(1);
+}
+
+.brand-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.brand-city {
+    font-size: 2rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.brand-subtitle {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 3rem;
+    font-weight: 400;
+}
+
+.features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.feature-item i {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    width: 40px;
+    text-align: center;
+}
+
+.feature-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.feature-text strong {
+    font-size: 1rem;
+    color: white;
+    margin-bottom: 0.25rem;
+}
+
+.feature-text span {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* ===== LADO DIREITO - FORMULÁRIO ===== */
+.form-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+}
+
+/* Mobile Header */
+.mobile-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.mobile-logo {
+    width: 60px;
+    height: auto;
+}
+
+.mobile-brand h2 {
+    font-size: 1.25rem;
+    color: #1e3a8a;
+    font-weight: 600;
+    margin: 0 0 0.25rem 0;
+}
+
+.mobile-brand p {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+/* Conteúdo do Formulário */
+.form-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    max-width: 440px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.form-intro {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.form-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-bottom: 0.5rem;
+}
+
+.form-description {
+    color: #6b7280;
+    font-size: 1rem;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Login Form */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.error-message {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5rem 0;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #374151;
+    font-size: 0.875rem;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.checkbox-label input {
+    display: none;
+}
+
+.checkmark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #d1d5db;
+    border-radius: 4px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.checkbox-label input:checked + .checkmark {
+    background: #1e3a8a;
+    border-color: #1e3a8a;
+}
+
+.checkbox-label input:checked + .checkmark::after {
+    content: '✓';
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.forgot-password {
+    color: #1e3a8a;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: #3730a3;
+    text-decoration: underline;
+}
+
+.login-footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #f3f4f6;
+}
+
+.support-text {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+
+.support-link {
+    color: #1e3a8a;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.support-link:hover {
+    text-decoration: underline;
+}
+
+.security-notice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: #059669;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* ===== DESKTOP STYLES ===== */
+@media (min-width: 769px) {
+    .split-login {
+        background: #ffffff;
+    }
+
+    .login-side {
+        display: flex;
+    }
+
+    .form-side {
+        background: #f8fafc;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mobile-header {
+        display: none;
+    }
+
+    .form-content {
+        background: #ffffff;
+        padding: 3rem;
+        border-radius: 0;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+        max-width: 440px;
+        margin: 0;
+    }
+
+    .form-intro {
+        text-align: left;
+    }
+
+    .form-title {
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .form-description {
+        font-size: 1.125rem;
+    }
+
+    /* Ajustes para desktop */
+    .brand-section {
+        padding: 2rem;
+    }
+
+    .brand-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;     /* Centraliza horizontalmente */
+        justify-content: center; /* Centraliza verticalmente */
+        text-align: center;      /* Centraliza o texto */
+        height: 100%;           /* Ocupa toda a altura disponível */
+    }
+
+    .brand-title {
+        font-size: 2.25rem;
+    }
+
+    .brand-city {
+        font-size: 1.75rem;
+    }
+
+    .brand-subtitle {
+        font-size: 1.25rem;
+    }
+}
+
+/* ===== MOBILE STYLES ===== */
+@media (max-width: 768px) {
+    .split-login {
+        flex-direction: column;
+        background: #ffffff;
+    }
+
+    .login-side {
+        display: none;
+    }
+
+    .form-side {
+        min-height: 100vh;
+    }
+
+    .form-content {
+        padding: 1.5rem;
+        max-width: none;
+    }
+
+    .mobile-header {
+        padding: 1.5rem;
+    }
+
+    .form-intro {
+        margin-bottom: 2rem;
+    }
+
+    .form-title {
+        font-size: 1.5rem;
+    }
+
+    .form-options {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .forgot-password {
+        align-self: flex-end;
+    }
+}
+
+/* Large Desktop */
+@media (min-width: 1200px) {
+    .brand-section {
+        padding: 4rem;
+    }
+
+    .brand-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;     /* Centraliza horizontalmente */
+        justify-content: center; /* Centraliza verticalmente */
+        text-align: center;      /* Centraliza o texto */
+        height: 100%;           /* Ocupa toda a altura disponível */
+    }
+
+    .brand-title {
+        font-size: 3rem;
+    }
+
+    .brand-city {
+        font-size: 2.25rem;
+    }
+
+    .form-content {
+        padding: 4rem;
+        max-width: 480px;
+    }
+}
+
+/* Animações */
+.split-login {
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media (min-width: 769px) {
+    .form-content {
+        background: transparent;    /* Remove fundo branco */
+        box-shadow: none;          /* Remove sombra */
+        padding: 0;                /* Remove padding interno */
+        border-radius: 0;          /* Remove bordas arredondadas */
+        /* Mantém apenas: */
+        max-width: 440px;
+        margin: 0 auto;
+    }
+}

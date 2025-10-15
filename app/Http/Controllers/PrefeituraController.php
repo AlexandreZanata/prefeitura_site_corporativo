@@ -11,6 +11,6 @@ class PrefeituraController extends Controller
      */
     public function index()
     {
-        return view('prefeitura');
+        return view('welcome'); // Altere de 'prefeitura' para 'welcome'
     }
 }

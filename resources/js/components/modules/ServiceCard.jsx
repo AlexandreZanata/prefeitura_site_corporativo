@@ -1,6 +1,6 @@
 import React from 'react';
-import Card from '../common/Card'; // Usaremos um Card base
-import Icon from '../common/Icon'; // <-- A importação correta está aqui
+import Card from '../common/Card';
+import Icon from '../common/Icon';
 import { useTheme } from '../../hooks/useTheme';
 
 const ServiceCard = ({ icon, title, text, link }) => {
@@ -54,7 +54,5 @@ const ServiceCard = ({ icon, title, text, link }) => {
     );
 };
 
-// A LINHA ABAIXO FOI REMOVIDA PARA CORRIGIR O ERRO
-// const Icon = ({ name, size }) => <i className={`fas ${name} fa-${size}`}></i>;
 
 export default ServiceCard;

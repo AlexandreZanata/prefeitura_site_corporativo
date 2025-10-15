@@ -11,6 +11,90 @@
     --font-body: 'Roboto', sans-serif;
 }
 
+/* Garante que a aplicação ocupe toda a tela, removendo faixas brancas */
+html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Previne scroll horizontal */
+}
+
+/* Estilos para o container da página de login */
+.login-page-wrapper {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Coluna da imagem (visível apenas no desktop) */
+.login-image-column {
+    background-image: url('https://cidade-sorriso.mt.gov.br/storage/image_manager/Iq9n1z08pUuA4221.jpeg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    color: white;
+    display: flex;
+    align-items: flex-end;
+    padding: 4rem;
+}
+/* Efeito de sobreposição escuro para a imagem, para o texto ficar legível */
+.login-image-column::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(11, 61, 46, 0.5); /* Tom de verde escuro com transparência */
+}
+.login-image-column .content {
+    position: relative; /* Garante que o texto fique acima da sobreposição */
+    z-index: 2;
+}
+
+
+/* Coluna do formulário */
+.login-form-column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: #fcfdff;
+}
+
+/* Regras para telas de celular (até 768px) */
+@media (max-width: 768px) {
+    /* Esconde a coluna da imagem no celular */
+    .login-image-column {
+        display: none;
+    }
+
+    /* Faz a coluna do formulário ocupar a tela inteira */
+    .login-form-column {
+        width: 100%;
+        padding: 0;
+    }
+
+    /* Faz o card ocupar 100% da altura e remove estilos desnecessários */
+    .login-form-column .card {
+        min-height: 100vh;
+        width: 100%;
+        border-radius: 0;
+        border: 0;
+        box-shadow: none;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
 body {
     font-family: var(--font-body);
     background-color: #fcfdff; /* Um branco levemente azulado, mais suave que o branco puro */
@@ -41,4 +125,26 @@ h1, h2, h3, h4, h5, h6 {
     height: 4px;
     background-color: var(--color-primary);
     border-radius: 2px;
+}
+
+/*
+  Ajustes para a página de login em telas pequenas (celulares).
+  Qualquer tela com largura de até 768px será afetada.
+*/
+@media (max-width: 768px) {
+    .login-container-mobile-fullscreen {
+        /* Remove a largura limitada e o espaçamento lateral */
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+
+        /* Faz o card ocupar toda a altura e remove bordas/sombras desnecessárias */
+        .card {
+            min-height: 100vh;
+            border-radius: 0 !important;
+            border: 0 !important;
+            box-shadow: none !important;
+        }
+    }
 }

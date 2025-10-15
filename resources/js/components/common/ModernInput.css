@@ -1,0 +1,116 @@
+.modern-input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-wrapper {
+    position: relative;
+    background: #ffffff;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.input-wrapper:focus-within {
+    border-color: #1e3a8a;
+    box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+    transform: translateY(-1px);
+}
+
+.input-wrapper.error {
+    border-color: #dc2626;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.input-wrapper.error:focus-within {
+    border-color: #dc2626;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.modern-input-group input {
+    width: 100%;
+    padding: 1rem 1rem 0.5rem 1rem;
+    font-size: 1rem;
+    border: none;
+    background: transparent;
+    outline: none;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    color: #111827;
+    transition: all 0.3s ease;
+}
+
+.modern-input-group input::placeholder {
+    color: transparent;
+}
+
+.modern-input-group input:focus {
+    outline: none;
+}
+
+.input-label {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    color: #6b7280;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    background: #ffffff;
+    padding: 0 0.25rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.modern-input-group input:focus + .input-label,
+.modern-input-group input:not(:placeholder-shown) + .input-label {
+    top: 0.75rem;
+    font-size: 0.75rem;
+    color: #1e3a8a;
+    font-weight: 500;
+}
+
+.input-wrapper.error input:focus + .input-label,
+.input-wrapper.error input:not(:placeholder-shown) + .input-label {
+    color: #dc2626;
+}
+
+.input-icon {
+    position: absolute;
+    right: 3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+    font-size: 1rem;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.password-toggle:hover {
+    color: #1e3a8a;
+    background: #f3f4f6;
+}
+
+.required-asterisk {
+    color: #dc2626;
+    margin-left: 2px;
+}
+
+.input-error {
+    color: #dc2626;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
