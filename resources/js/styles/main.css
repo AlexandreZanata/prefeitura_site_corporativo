@@ -1,0 +1,44 @@
+/* Importando as fontes do Google Fonts (Inter e Roboto) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;800&family=Roboto:wght@400;500&display=swap');
+
+:root {
+    /* As variáveis de cor serão injetadas aqui via JavaScript, mas definimos um fallback */
+    --color-primary: #2E7D32;
+    --color-accent: #F4C542;
+    --color-text: #0B3D2E;
+    --color-background: #F5F5F5;
+    --font-headline: 'Inter', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: #fcfdff; /* Um branco levemente azulado, mais suave que o branco puro */
+    color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-headline);
+    color: var(--color-text);
+}
+
+.section-title {
+    font-weight: 800;
+    margin-bottom: 4rem;
+    color: var(--color-text);
+    position: relative;
+    display: inline-block;
+}
+
+/* Adiciona uma pequena linha decorativa abaixo do título da seção */
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 4px;
+    background-color: var(--color-primary);
+    border-radius: 2px;
+}
