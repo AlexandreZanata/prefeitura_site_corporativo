@@ -5,4 +5,7 @@ $body-bg: #f8fafc;
 $font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
-$fa-font-path: "../assets/webfonts";
+// Ensure Font Awesome fonts resolve correctly in both dev (Vite) and production.
+// We copy fonts to public/fontawesome/webfonts (and build may emit to /build/assets/webfonts).
+// Using an absolute public path prevents /resources/* 404s in dev.
+$fa-font-path: "/fontawesome/webfonts";

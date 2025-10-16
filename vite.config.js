@@ -24,4 +24,13 @@ export default defineConfig({
             ]
         }),
     ],
+    server: {
+        proxy: {
+            // Proxy API requests to the Laravel backend during development
+            '/api': {
+                target: 'http://127.0.0.1:8000',
+                changeOrigin: true,
+            }
+        }
+    }
 });

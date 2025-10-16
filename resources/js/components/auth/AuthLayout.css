@@ -1,0 +1,21 @@
+/* Reuse existing auth page styles to keep look & feel consistent */
+@import '../../pages/LoginPage.css';
+
+/* Standardize container width/margins for all auth forms */
+.form-content {
+  max-width: 440px; /* unified form width */
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure consistent spacing between blocks */
+.form-intro {
+  margin-bottom: 1.5rem;
+}
+
+.login-footer {
+  margin-top: 1.25rem;
+}

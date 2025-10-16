@@ -4,6 +4,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'; // Import route
 import { ThemeProvider } from './contexts/ThemeContext';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
+import PrivateRoute from './routes/PrivateRoute';
+import ForgotPasswordPage from './pages/ForgotPasswordPage';
+import RegisterPage from './pages/RegisterPage';
 import './styles/main.css';
 
 function App() {
@@ -21,11 +24,15 @@ function App() {
             <BrowserRouter>
                 {/* Routes is a container for all the individual routes */}
                 <Routes>
-                    {/* When the URL is "/", render the HomePage component */}
+                    {/* When the URL is "/", render the HomePage component (public) */}
                     <Route path="/" element={<HomePage />} />
 
                     {/* When the URL is "/login", render the LoginPage component */}
                     <Route path="/login" element={<LoginPage />} />
+
+                    {/* New pages for account actions */}
+                    <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+                    <Route path="/register" element={<RegisterPage />} />
 
                     {/* You can add more routes for other pages here in the future */}
                 </Routes>
