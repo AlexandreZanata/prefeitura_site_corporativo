@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTheme } from '../hooks/useTheme';
 import ModernInput from '../components/common/ModernInput';
 import ActionButton from '../components/common/ActionButton';
+import StatusAlert from '../components/common/StatusAlert';
 import { authService } from '../services/authService';
 import AuthLayout from '../components/auth/AuthLayout';
 
@@ -81,10 +82,7 @@ const LoginPage = () => {
                 />
 
                 {error && !error.includes('obrigatório') && (
-                    <div className="error-message">
-                        <i className="fas fa-exclamation-triangle"></i>
-                        {error}
-                    </div>
+                    <StatusAlert type="error">{error}</StatusAlert>
                 )}
 
                 <div className="form-options">

@@ -1,21 +1,79 @@
-/* Reuse existing auth page styles to keep look & feel consistent */
+/* Base auth styles (keeps original layout) */
 @import '../../pages/LoginPage.css';
 
-/* Standardize container width/margins for all auth forms */
-.form-content {
-  max-width: 440px; /* unified form width */
+/* Design tokens for auth pages */
+:root {
+  --auth-bg: #f8fafc;
+  --auth-card-bg: #ffffff;
+  --auth-primary: #1e3a8a; /* indigo-800 */
+  --auth-primary-2: #3730a3; /* indigo-700 */
+  --auth-text: #0f172a; /* slate-900 */
+  --auth-muted: #6b7280; /* gray-500 */
+  --auth-border: #e5e7eb; /* gray-200 */
+  --auth-radius: 14px;
+  --auth-shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+  --auth-shadow-hover: 0 20px 40px rgba(2, 6, 23, 0.12);
 }
 
+/* Subtle gradient on the form side to look more premium */
+.form-side {
+  background: linear-gradient(180deg, #fff 0%, #f9fafb 60%, #f3f4f6 100%);
+}
+
+/* Mobile header polish */
+.mobile-header {
+  background: transparent;
+  border-bottom: 1px solid var(--auth-border);
+}
+
+/* Card-like container for the form content */
+.form-content {
+  max-width: 520px; /* slightly wider but still compact */
+  width: 100%;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: var(--auth-card-bg);
+  border: 1px solid var(--auth-border);
+  border-radius: var(--auth-radius);
+  box-shadow: var(--auth-shadow);
+}
+
+.form-content:hover {
+  box-shadow: var(--auth-shadow-hover);
+}
+
+/* Header styles */
+.form-intro {
+  margin-bottom: 1.75rem;
+  text-align: center;
+}
+
+.form-title {
+  font-size: 1.9rem;
+  color: var(--auth-primary);
+}
+
+.form-description {
+  color: var(--auth-muted);
+}
+
+/* Form layout */
 .login-form {
   display: flex;
   flex-direction: column;
+  gap: 1.25rem;
 }
 
-/* Ensure consistent spacing between blocks */
-.form-intro {
-  margin-bottom: 1.5rem;
-}
-
+/* Footer */
 .login-footer {
   margin-top: 1.25rem;
+  text-align: center;
 }
+
+.support-text { color: var(--auth-muted); }
+.support-link { color: var(--auth-primary); font-weight: 600; text-decoration: none; }
+.support-link:hover { text-decoration: underline; }
+
+/* Security note alignment */
+.security-notice { display: inline-flex; align-items: center; gap: 8px; color: var(--auth-muted); margin-top: 0.5rem; }
+.security-notice i { color: var(--auth-primary); }

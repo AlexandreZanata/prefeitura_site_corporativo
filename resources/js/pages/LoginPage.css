@@ -8,7 +8,7 @@
 /* ===== LADO ESQUERDO - BRANDING COM FUNDO AZUL ===== */
 .login-side {
     flex: 1;
-    background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+    background: radial-gradient(1200px 600px at -10% -10%, rgba(255,255,255,0.08), transparent 60%), linear-gradient(135deg, #0b1e63 0%, #1e3a8a 50%, #3730a3 100%);
     color: white;
     display: none;
     position: relative;
@@ -470,3 +470,28 @@
         margin: 0 auto;
     }
 }
+
+
+/* ===== Enhancements for left side visibility and polish ===== */
+@media (min-width: 992px) {
+  .login-side {
+    display: block;
+  }
+}
+
+/* Subtle vignette overlay for depth */
+.login-side::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(1000px 600px at 80% -10%, rgba(255,255,255,0.06), transparent 50%),
+                linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.0) 40%, rgba(0,0,0,0.25) 100%);
+    pointer-events: none;
+}
+
+/* Refined brand content spacing */
+.brand-section { padding: 4rem; }
+.brand-title { letter-spacing: 0.2px; }
+.brand-subtitle { margin-top: 0.25rem; }
+.features-list { margin-top: 2.5rem; }
+.feature-item { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.25); }

@@ -13,21 +13,24 @@ const ModernInput = ({
                          required = true,
                          error = ''
                      }) => {
+    const resolvedType = type === 'password' && isPasswordVisible ? 'text' : type;
     return (
         <div className="modern-input-group">
-            <div className={`input-wrapper ${error ? 'error' : ''} ${value ? 'has-value' : ''}`}>
-                <input
-                    id={id}
-                    type={type === 'password' && isPasswordVisible ? 'text' : type}
-                    value={value}
-                    onChange={onChange}
-                    required={required}
-                    placeholder=" "
-                />
+            {label && (
                 <label htmlFor={id} className="input-label">
                     {label}
                     {required && <span className="required-asterisk">*</span>}
                 </label>
+            )}
+            <div className={`input-wrapper ${error ? 'error' : ''}`}>
+                <input
+                    id={id}
+                    type={resolvedType}
+                    value={value}
+                    onChange={onChange}
+                    required={required}
+                    autoComplete={id}
+                />
                 {icon && (
                     <i className={`input-icon fas ${icon}`}></i>
                 )}
@@ -36,6 +39,7 @@ const ModernInput = ({
                         type="button"
                         className="password-toggle"
                         onClick={onToggleVisibility}
+                        aria-label={isPasswordVisible ? 'Ocultar senha' : 'Mostrar senha'}
                     >
                         <i className={`fas ${isPasswordVisible ? 'fa-eye-slash' : 'fa-eye'}`}></i>
                     </button>

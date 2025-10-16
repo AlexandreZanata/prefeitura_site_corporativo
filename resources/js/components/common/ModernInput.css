@@ -29,7 +29,7 @@
 
 .modern-input-group input {
     width: 100%;
-    padding: 1rem 1rem 0.5rem 1rem;
+    padding: 0.875rem 2.75rem 0.875rem 1rem; /* espaço para ícone/toggle */
     font-size: 1rem;
     border: none;
     background: transparent;
@@ -41,7 +41,7 @@
 }
 
 .modern-input-group input::placeholder {
-    color: transparent;
+    color: #9ca3af;
 }
 
 .modern-input-group input:focus {
@@ -49,30 +49,12 @@
 }
 
 .input-label {
-    position: absolute;
-    top: 50%;
-    left: 1rem;
-    transform: translateY(-50%);
-    color: #6b7280;
-    font-size: 1rem;
-    pointer-events: none;
-    transition: all 0.3s ease;
-    background: #ffffff;
-    padding: 0 0.25rem;
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #374151; /* gray-700 */
+    font-size: 0.95rem;
+    font-weight: 600;
     font-family: 'Inter', sans-serif;
-}
-
-.modern-input-group input:focus + .input-label,
-.modern-input-group input:not(:placeholder-shown) + .input-label {
-    top: 0.75rem;
-    font-size: 0.75rem;
-    color: #1e3a8a;
-    font-weight: 500;
-}
-
-.input-wrapper.error input:focus + .input-label,
-.input-wrapper.error input:not(:placeholder-shown) + .input-label {
-    color: #dc2626;
 }
 
 .input-icon {

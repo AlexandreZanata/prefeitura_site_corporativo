@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ModernInput from '../components/common/ModernInput';
 import ActionButton from '../components/common/ActionButton';
+import StatusAlert from '../components/common/StatusAlert';
 import { authService } from '../services/authService';
 import AuthLayout from '../components/auth/AuthLayout';
 
@@ -126,16 +127,10 @@ const RegisterPage = () => {
         />
 
         {error && !error.includes('obrigatório') && (
-          <div className="error-message">
-            <i className="fas fa-exclamation-triangle"></i>
-            {error}
-          </div>
+          <StatusAlert type="error">{error}</StatusAlert>
         )}
         {success && (
-          <div className="success-message" style={{ color: '#065f46', background: '#ecfdf5', border: '1px solid #a7f3d0', padding: '0.75rem 1rem', borderRadius: 8, marginBottom: '1rem' }}>
-            <i className="fas fa-check-circle" style={{ marginRight: 8 }}></i>
-            {success}
-          </div>
+          <StatusAlert type="success">{success}</StatusAlert>
         )}
 
         <ActionButton text="Criar conta" isLoading={isLoading} size="large" />
