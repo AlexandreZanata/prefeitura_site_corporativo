@@ -1,5 +1,6 @@
 .modern-input-group {
-    margin-bottom: 1.5rem;
+    /* Reduce default spacing between inputs; rely mostly on form gap */
+    margin-bottom: 0.25rem;
 }
 
 .input-wrapper {
@@ -59,11 +60,16 @@
 
 .input-icon {
     position: absolute;
-    right: 3rem;
+    right: 1rem; /* default at the end, same as the eye */
     top: 50%;
     transform: translateY(-50%);
     color: #9ca3af;
     font-size: 1rem;
+}
+
+/* When the password eye is present, shift the icon left to make room */
+.input-icon.with-toggle {
+    right: 3rem;
 }
 
 .password-toggle {

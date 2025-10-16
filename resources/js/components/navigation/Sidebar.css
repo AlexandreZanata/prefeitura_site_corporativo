@@ -1,0 +1,305 @@
+/* Sidebar component styles */
+
+.navbar-react {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.navbar-react .nav-left,
+.navbar-react .nav-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-react .nav-left {
+  flex: 1 1 auto;
+}
+
+.navbar-react .nav-menu {
+  display: flex;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure list items have no bullets as well */
+.navbar-react .nav-item {
+  list-style: none;
+}
+
+.navbar-react .nav-item > a,
+.navbar-react .nav-button {
+  color: #1f2937;
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.navbar-react .nav-item > a:hover,
+.navbar-react .nav-button:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+/* Dropdown styles */
+.dropdown {
+  position: relative;
+}
+.dropdown-menu-react {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.1);
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+  border-radius: 10px;
+  padding: 8px;
+  z-index: 1000;
+}
+.dropdown-header-react {
+  font-size: 12px;
+  font-weight: 700;
+  color: #6b7280;
+  padding: 6px 8px;
+  text-transform: uppercase;
+}
+.dropdown-item-react {
+  display: block;
+  padding: 8px 10px;
+  color: #111827;
+  border-radius: 8px;
+}
+.dropdown-item-react:hover {
+  background: #f3f4f6;
+}
+
+/* Mobile drawer */
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+  z-index: 1040;
+}
+.drawer-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.drawer {
+  position: fixed;
+  top: 0;
+  right: -80%;
+  width: 80%;
+  max-width: 420px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: -10px 0 30px rgba(0,0,0,.15);
+  transition: right .3s ease;
+  z-index: 1050;
+  display: flex;
+  flex-direction: column;
+}
+.drawer.open {
+  right: 0;
+}
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+.drawer-body {
+  padding: 10px 12px 24px;
+  overflow-y: auto;
+}
+.drawer-menu {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+}
+.drawer-menu .group-title {
+  margin: 12px 8px 4px;
+  color: #6b7280;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.drawer-menu a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: #111827;
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+.drawer-menu a:hover {
+  background: #f9fafb;
+  border-color: #e5e7eb;
+}
+
+/* Show desktop nav only on >= lg */
+@media (max-width: 991.98px) {
+  .desktop-only { display: none !important; }
+}
+@media (min-width: 992px) {
+  .mobile-only { display: none !important; }
+}
+
+:root {}
+
+/* Accessibility-friendly reset for button-like links */
+.navbar-react .nav-button {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
+/* Dropdown hidden by default; open only on click */
+.dropdown-menu-react {
+  display: none;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .16s ease, transform .16s ease;
+}
+.dropdown.open .dropdown-menu-react,
+.dropdown-menu-react.open {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile hamburger button */
+.hamburger {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  position: relative;
+}
+.hamburger .line {
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  background: #111827;
+  border-radius: 2px;
+  transition: transform .25s ease, opacity .2s ease, top .25s ease;
+}
+.hamburger .line:nth-child(1) { top: 14px; }
+.hamburger .line:nth-child(2) { top: 20px; }
+.hamburger .line:nth-child(3) { top: 26px; }
+.hamburger.active .line:nth-child(1) { top: 20px; transform: rotate(45deg); }
+.hamburger.active .line:nth-child(2) { opacity: 0; }
+.hamburger.active .line:nth-child(3) { top: 20px; transform: rotate(-45deg); }
+
+/* Drawer toggle (accordion) */
+.drawer-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  color: #111827;
+}
+.drawer-toggle:hover { background: #f9fafb; }
+.drawer-section {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .25s ease;
+  padding-left: 4px;
+}
+.drawer-section.open { max-height: 1000px; }
+.caret { transition: transform .2s ease; }
+.caret.rotated { transform: rotate(90deg); }
+
+/* Minimal icon button for drawer close */
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon-close {
+  position: relative;
+  width: 16px;
+  height: 16px;
+}
+.icon-close::before,
+.icon-close::after {
+  content: '';
+  position: absolute;
+  top: 7px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #111827;
+}
+.icon-close::before { transform: rotate(45deg); }
+.icon-close::after { transform: rotate(-45deg); }
+
+/* Visual polish + cohesive hover/active/focus-visible without blue border */
+.navbar-react .nav-item > a,
+.navbar-react .nav-button {
+  box-shadow: inset 0 0 0 0 transparent;
+  transition: background .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+
+/* Hover: subtle container emphasis */
+.navbar-react .nav-item > a:hover,
+.navbar-react .nav-button:hover {
+  background: #f5f7fb; /* light neutral fill */
+  box-shadow: inset 0 0 0 1px #e5e7eb; /* soft inner ring */
+}
+
+/* Active (pressed): slightly stronger container state */
+.navbar-react .nav-item > a:active,
+.navbar-react .nav-button:active {
+  background: #eef2ff; /* soft brand-tinted fill */
+  box-shadow: inset 0 0 0 2px #c7d2fe; /* stronger inner ring */
+}
+
+/* Replace blue outline with an accessible focus-visible inner ring */
+.navbar-react .nav-item > a:focus-visible,
+.navbar-react .nav-button:focus-visible,
+.drawer-toggle:focus-visible,
+.hamburger:focus-visible,
+.icon-btn:focus-visible {
+  outline: none;
+  background: #f5f7fb;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.18); /* soft glow within container */
+}
+
+/* Buttons in mobile drawer: hover/active for cohesion */
+.drawer-toggle,
+.hamburger,
+.icon-btn {
+  transition: background .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+.drawer-toggle:hover,
+.hamburger:hover,
+.icon-btn:hover {
+  background: #f9fafb;
+  box-shadow: inset 0 0 0 1px #e5e7eb;
+}
+.drawer-toggle:active,
+.hamburger:active,
+.icon-btn:active {
+  background: #eff6ff;
+  box-shadow: inset 0 0 0 2px #bfdbfe;
+}

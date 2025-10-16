@@ -1,5 +1,6 @@
 .split-login {
     min-height: 100vh;
+    min-height: 100svh; /* Better mobile viewport height handling */
     display: flex;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background: #ffffff;
@@ -27,10 +28,10 @@
 
 .brand-section {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     height: 100%;
-    padding: 3rem;
+    padding: 80px 0 3rem;
     position: relative;
     z-index: 1;
 }
@@ -38,10 +39,11 @@
 .brand-content {
     display: flex;
     flex-direction: column;
-    align-items: center;     /* Centraliza horizontalmente */
-    justify-content: center; /* Centraliza verticalmente */
-    text-align: center;      /* Centraliza o texto */
-    height: 100%;           /* Ocupa toda a altura disponível */
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    gap: 1rem;
+    height: 100%;
 }
 
 .brand-logo {
@@ -83,18 +85,37 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1rem 1.1rem;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    box-shadow: 0 10px 24px rgba(3, 7, 18, 0.15);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 36px rgba(3, 7, 18, 0.22);
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.35);
 }
 
 .feature-item i {
-    font-size: 1.5rem;
-    color: rgba(255, 255, 255, 0.9);
-    width: 40px;
-    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0.06) 100%
+    );
+    color: rgba(255, 255, 255, 0.95);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 6px 16px rgba(0,0,0,0.15);
+    font-size: 1.1rem;
 }
 
 .feature-text {
@@ -120,6 +141,8 @@
     display: flex;
     flex-direction: column;
     background: #ffffff;
+    min-height: 100vh;
+    min-height: 100svh;
 }
 
 /* Mobile Header */
@@ -312,6 +335,8 @@
 
     .login-side {
         display: flex;
+        align-items: flex-start; /* Mantém início fixo no topo */
+        justify-content: center; /* Centraliza horizontalmente */
     }
 
     .form-side {
@@ -346,22 +371,39 @@
         font-size: 1.125rem;
     }
 
-    /* Ajustes para desktop */
+    /* CONTEÚDO ESQUERDO COM POSIÇÃO FIXA NO TOPO E CENTRALIZADO */
     .brand-section {
-        padding: 2rem;
+        display: flex;
+        align-items: flex-start; /* Mantém no topo */
+        justify-content: center; /* Centraliza horizontalmente */
+        height: 100%;
+        width: 100%;
+        padding: 80px 2rem 2rem; /* Padding top fixo de 80px */
+        position: relative;
+        z-index: 1;
+        box-sizing: border-box;
+        overflow-y: auto; /* Permite scroll se necessário */
     }
 
     .brand-content {
         display: flex;
         flex-direction: column;
-        align-items: center;     /* Centraliza horizontalmente */
-        justify-content: center; /* Centraliza verticalmente */
-        text-align: center;      /* Centraliza o texto */
-        height: 100%;           /* Ocupa toda a altura disponível */
+        align-items: center; /* Centraliza horizontalmente */
+        justify-content: flex-start; /* Começa do topo */
+        text-align: center; /* Texto centralizado */
+        gap: 1.5rem;
+        max-width: 500px;
+        width: 100%;
+        margin: 0;
+    }
+
+    .brand-logo {
+        margin-bottom: 0;
     }
 
     .brand-title {
         font-size: 2.25rem;
+        margin-bottom: 0;
     }
 
     .brand-city {
@@ -370,6 +412,16 @@
 
     .brand-subtitle {
         font-size: 1.25rem;
+        margin-bottom: 0;
+    }
+
+    .features-list {
+        margin-top: 0;
+        width: 100%;
+    }
+
+    .feature-text {
+        text-align: left; /* Mantém texto à esquerda dentro dos itens */
     }
 }
 
@@ -385,12 +437,22 @@
     }
 
     .form-side {
-        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        min-height: 100svh;
     }
 
     .form-content {
+        flex: 1;
         padding: 1.5rem;
         max-width: none;
+        margin: 0;
+        border: none;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     .mobile-header {
@@ -418,30 +480,36 @@
 
 /* Large Desktop */
 @media (min-width: 1200px) {
-    .brand-section {
-        padding: 4rem;
-    }
-
     .brand-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;     /* Centraliza horizontalmente */
-        justify-content: center; /* Centraliza verticalmente */
-        text-align: center;      /* Centraliza o texto */
-        height: 100%;           /* Ocupa toda a altura disponível */
+        max-width: 500px; /* Mantém largura consistente */
     }
 
     .brand-title {
-        font-size: 3rem;
+        font-size: 2.5rem;
     }
 
     .brand-city {
-        font-size: 2.25rem;
+        font-size: 2rem;
+    }
+
+    .brand-subtitle {
+        font-size: 1.5rem;
     }
 
     .form-content {
         padding: 4rem;
         max-width: 480px;
+    }
+}
+
+/* Extra Large Desktop - Para manter consistência */
+@media (min-width: 1600px) {
+    .brand-content {
+        max-width: 500px; /* Não aumenta mais, mantém fixo */
+    }
+
+    .brand-section {
+        padding: 100px 2rem 2rem; /* Apenas ajusta o padding top para telas muito grandes */
     }
 }
 
@@ -461,22 +529,20 @@
 
 @media (min-width: 769px) {
     .form-content {
-        background: transparent;    /* Remove fundo branco */
-        box-shadow: none;          /* Remove sombra */
-        padding: 0;                /* Remove padding interno */
-        border-radius: 0;          /* Remove bordas arredondadas */
-        /* Mantém apenas: */
+        background: transparent;
+        box-shadow: none;
+        padding: 0;
+        border-radius: 0;
         max-width: 440px;
         margin: 0 auto;
     }
 }
 
-
 /* ===== Enhancements for left side visibility and polish ===== */
 @media (min-width: 992px) {
-  .login-side {
-    display: block;
-  }
+    .login-side {
+        display: flex;
+    }
 }
 
 /* Subtle vignette overlay for depth */
@@ -485,13 +551,112 @@
     position: absolute;
     inset: 0;
     background: radial-gradient(1000px 600px at 80% -10%, rgba(255,255,255,0.06), transparent 50%),
-                linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.0) 40%, rgba(0,0,0,0.25) 100%);
+    linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.0) 40%, rgba(0,0,0,0.25) 100%);
     pointer-events: none;
 }
 
 /* Refined brand content spacing */
-.brand-section { padding: 4rem; }
 .brand-title { letter-spacing: 0.2px; }
 .brand-subtitle { margin-top: 0.25rem; }
-.features-list { margin-top: 2.5rem; }
 .feature-item { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.25); }
+
+/* Base auth styles (keeps original layout) */
+@import 'LoginPage.css';
+
+/* Design tokens for auth pages */
+:root {
+    --auth-bg: #f8fafc;
+    --auth-card-bg: #ffffff;
+    --auth-primary: #1e3a8a;
+    --auth-primary-2: #3730a3;
+    --auth-text: #0f172a;
+    --auth-muted: #6b7280;
+    --auth-border: #e5e7eb;
+    --auth-radius: 14px;
+    --auth-shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+    --auth-shadow-hover: 0 20px 40px rgba(2, 6, 23, 0.12);
+}
+
+/* Subtle gradient on the form side to look more premium */
+.form-side {
+    background: linear-gradient(180deg, #fff 0%, #f9fafb 60%, #f3f4f6 100%);
+}
+
+/* Mobile header polish */
+.mobile-header {
+    background: transparent;
+    border-bottom: 1px solid var(--auth-border);
+}
+
+/* Card-like container for the form content */
+.form-content {
+    max-width: 520px;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--auth-card-bg);
+    border: 1px solid var(--auth-border);
+    border-radius: var(--auth-radius);
+    box-shadow: var(--auth-shadow);
+}
+
+.form-content:hover {
+    box-shadow: var(--auth-shadow-hover);
+}
+
+/* Header styles */
+.form-intro {
+    margin-bottom: 1.75rem;
+    text-align: center;
+}
+
+.form-title {
+    font-size: 1.9rem;
+    color: var(--auth-primary);
+}
+
+.form-description {
+    color: var(--auth-muted);
+}
+
+/* Form layout */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+/* Footer */
+.login-footer {
+    margin-top: 1.25rem;
+    text-align: center;
+}
+
+.support-text { color: var(--auth-muted); }
+.support-link { color: var(--auth-primary); font-weight: 600; text-decoration: none; }
+.support-link:hover { text-decoration: underline; }
+
+/* Security note alignment */
+.security-notice { display: inline-flex; align-items: center; gap: 8px; color: var(--auth-muted); margin-top: 0.5rem; }
+.security-notice i { color: var(--auth-primary); }
+
+/* Mobile: ensure full-screen form container fills viewport and removes card chrome */
+@media (max-width: 768px) {
+    .form-side {
+        display: flex;
+        flex-direction: column;
+        min-height: 100svh;
+    }
+    .form-content {
+        flex: 1;
+        margin: 0;
+        padding: 1.5rem;
+        max-width: none;
+        border: none;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}

@@ -32,7 +32,7 @@ const ModernInput = ({
                     autoComplete={id}
                 />
                 {icon && (
-                    <i className={`input-icon fas ${icon}`}></i>
+                    <i className={`input-icon fas ${icon} ${type === 'password' ? 'with-toggle' : ''}`}></i>
                 )}
                 {type === 'password' && (
                     <button

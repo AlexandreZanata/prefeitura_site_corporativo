@@ -7,6 +7,7 @@ import LoginPage from './pages/LoginPage';
 import PrivateRoute from './routes/PrivateRoute';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import RegisterPage from './pages/RegisterPage';
+import ContactPage from './pages/ContactPage';
 import './styles/main.css';
 
 function App() {
@@ -33,6 +34,9 @@ function App() {
                     {/* New pages for account actions */}
                     <Route path="/forgot-password" element={<ForgotPasswordPage />} />
                     <Route path="/register" element={<RegisterPage />} />
+
+                    {/* Public informational pages */}
+                    <Route path="/contato" element={<ContactPage />} />
 
                     {/* You can add more routes for other pages here in the future */}
                 </Routes>

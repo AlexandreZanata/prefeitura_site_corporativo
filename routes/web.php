@@ -4,42 +4,58 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PrefeituraController;
 use App\Http\Controllers\PageController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+// =========================================================================
+// REACT APPLICATION ROUTES
+// =========================================================================
 
-// --- React Application Routes ---
-
-// Route for the React Homepage.
-// IMPORTANT: Ensure the 'index' method in your PrefeituraController returns `view('welcome');`
+/**
+ * React Homepage Route
+ * IMPORTANT: Ensure the 'index' method in PrefeituraController returns view('welcome')
+ */
 Route::get('/', [PrefeituraController::class, 'index'])->name('prefeitura.index');
 
-// Route for our custom React Login Page.
-// This loads the main 'welcome.blade.php' view, and then React Router takes over to show the LoginPage component.
+/**
+ * React Login Page Route
+ * Loads the main 'welcome' view, then React Router handles the LoginPage component
+ */
 Route::get('/login', function () {
     return view('welcome');
 })->name('login');
 
-// --- Backend and Authentication Routes ---
+/**
+ * React Contact Page Route
+ * Public route for contact page handled by React
+ */
+Route::get('/contato', function () {
+    return view('welcome');
+})->name('contact');
 
-// Include Laravel's built-in authentication routes (for handling the login POST request, logout, etc.),
-// but we explicitly disable the default GET /login route to prevent it from conflicting with our React route above.
+// =========================================================================
+// AUTHENTICATION ROUTES
+// =========================================================================
+
+/**
+ * Laravel Authentication Routes
+ * Includes built-in auth routes but disables GET /login to avoid conflict with React route
+ */
 Auth::routes(['login' => false]);
 
-// This is the default dashboard route after a user logs in successfully.
+/**
+ * Dashboard Route
+ * Default route after successful user login
+ */
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// --- Dynamic Content Route ---
+// =========================================================================
+// DYNAMIC CONTENT ROUTES
+// =========================================================================
 
-// This route handles dynamically created pages from the database (e.g., from a CMS).
-// NOTE: This will act as a catch-all for any URL that hasn't been defined above.
-// If you add new pages in React (e.g., /contact), you must define their Laravel route
-// above this line and point it to `view('welcome');`
+/**
+ * Dynamic Page Route
+ * Handles dynamically created pages from database (CMS functionality)
+ *
+ * IMPORTANT: This acts as a catch-all for undefined URLs
+ * When adding new React pages, define their Laravel routes above this line
+ * and point them to view('welcome')
+ */
 Route::get('/{slug}', [PageController::class, 'show'])->name('page.show');

@@ -61,7 +61,7 @@
 .login-form {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 0.75rem; /* tighter spacing between inputs */
 }
 
 /* Footer */
@@ -77,3 +77,25 @@
 /* Security note alignment */
 .security-notice { display: inline-flex; align-items: center; gap: 8px; color: var(--auth-muted); margin-top: 0.5rem; }
 .security-notice i { color: var(--auth-primary); }
+
+
+/* Mobile: ensure full-screen form container fills viewport and removes card chrome */
+@media (max-width: 768px) {
+  .form-side {
+    display: flex;
+    flex-direction: column;
+    min-height: 100svh;
+  }
+  .form-content {
+    flex: 1;
+    margin: 0;
+    padding: 1.5rem;
+    max-width: none;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
